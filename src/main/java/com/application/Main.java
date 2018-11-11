@@ -1,8 +1,5 @@
 package com.application;
 	
-import java.io.FileInputStream;
-import java.net.URL;
-
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -20,6 +17,7 @@ public class Main extends Application {
 			primaryStage.getIcons().add(new Image(Main.class.getResource("images/icon.png").toExternalForm()));
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Need For Speed");
+			scene.getRoot().requestFocus();
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
