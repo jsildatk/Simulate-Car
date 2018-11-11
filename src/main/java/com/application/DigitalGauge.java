@@ -11,8 +11,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 public class DigitalGauge extends Parent {
-	private final double boxHeight = 15;
-	private final double boxWidth = boxHeight * 5 / 7;
+	private final double boxHeight = 12;
+	private final double boxWidth = boxHeight * 5 / 8;
 	private final double scale = 5;
 	private final Font font = new Font(10 * scale);
 	private HBox hBox = new HBox();

@@ -1,5 +1,11 @@
-#borderPane{
+#borderPane {
     -fx-background-image: url("images/road.jpg");
     -fx-background-repeat: no-repeat;   
     -fx-background-position: center center;
+}
+#anchorPaneImage {
+    -fx-background-image: url("images/cockpit.jpeg");
+    -fx-background-repeat: no-repeat;   
+    -fx-background-position: center center;
+    -fx-background-size: 70%;
 }
