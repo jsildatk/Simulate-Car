@@ -18,6 +18,13 @@ public class Engine {
 		this.activeGear = "N";
 		this.isTurnedOn = false;
 	}
+	
+	public void turnOfEngine() {
+		this.rpm = 0;
+		this.kph = 0;
+		this.activeGear = " ";
+		this.isTurnedOn = false;
+	}
 
 	public String getActiveGear() {
 		return activeGear;

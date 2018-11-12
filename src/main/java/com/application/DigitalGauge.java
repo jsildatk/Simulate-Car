@@ -75,4 +75,10 @@ public class DigitalGauge extends Parent {
 			}
 		}
 	}
+	
+	public void resetDigits() {
+		for (int i = 0; i < digits.length; i++) {
+			digits[i].setText(" ");
+		}
+	}
 }

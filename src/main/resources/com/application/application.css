@@ -2,6 +2,7 @@
     -fx-background-image: url("images/road.jpg");
     -fx-background-repeat: no-repeat;   
     -fx-background-position: center center;
+    -fx-background-size: cover;
 }
 #anchorPaneImage {
     -fx-background-image: url("images/cockpit.jpeg");

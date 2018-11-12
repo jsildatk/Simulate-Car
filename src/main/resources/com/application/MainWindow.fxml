@@ -15,7 +15,7 @@
          <children>
             <StackPane fx:id="stackPaneGaugeKMH" prefHeight="150.0" prefWidth="200.0">
       			<children>
-      				<Text fill="#d7d70a" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" style="Bold" text="KM/H" StackPane.alignment="BOTTOM_CENTER">
+      				<Text fill="BLACK" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" style="Bold" text="KM/H" StackPane.alignment="BOTTOM_CENTER">
                   		<font>
                         	<Font name="System Bold" size="20.0" />
                     	</font>
@@ -24,7 +24,7 @@
       		</StackPane>
             <StackPane fx:id="stackPaneGaugeRPM" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="255.0">
             	<children>
-      				<Text fill="#d7d70a" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" style="Bold" text="RPM" StackPane.alignment="BOTTOM_CENTER">
+      				<Text fill="BLACK" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" style="Bold" text="RPM" StackPane.alignment="BOTTOM_CENTER">
                   		<font>
                         	<Font name="System Bold" size="20.0" />
                     	</font>
@@ -33,7 +33,7 @@
             </StackPane>
             <StackPane fx:id="stackPaneGaugeGear" layoutX="10.0" layoutY="160.0" prefHeight="150.0" prefWidth="200.0">
             	<children>
-      				<Text fill="#d7d70a" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" style="Bold" text="Bieg" StackPane.alignment="BOTTOM_CENTER">
+      				<Text fill="BLACK" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" style="Bold" text="Bieg" StackPane.alignment="BOTTOM_CENTER">
                   		<font>
                         	<Font name="System Bold" size="20.0" />
                     	</font>
@@ -42,7 +42,7 @@
             </StackPane>
             <StackPane fx:id="stackPaneGaugeShift" layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0">
             	<children>
-      				<Text fill="#d7d70a" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" style="Bold" text="Zmiana biegu" StackPane.alignment="BOTTOM_CENTER">
+      				<Text fill="BLACK" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" style="Bold" text="Zmiana biegu" StackPane.alignment="BOTTOM_CENTER">
                   		<font>
                         	<Font name="System Bold" size="20.0" />
                     	</font>

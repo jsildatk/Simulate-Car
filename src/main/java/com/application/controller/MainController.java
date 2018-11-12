@@ -80,11 +80,17 @@ public class MainController implements Initializable {
 			engine.setTurnedOn(true);
 			engine.setRpm(engine.getMinRpm());
 			engine.setKph(0);
-			engine.setActiveGear(GearBox.gears.get(1));
+			engine.setActiveGear(GearBox.getGear("N"));
 			gaugeRpm.refreshDigits(String.valueOf(engine.getRpm()));
 			gaugeKph.refreshDigits(String.valueOf(engine.getKph()));
 			gaugeGear.refreshDigits(engine.getActiveGear());
 			circleEngine.setFill(Color.GREEN);
+		} else if (engine.getKph() == 0 && engine.isTurnedOn()) {
+			engine.turnOfEngine();
+			gaugeRpm.resetDigits();
+			gaugeKph.resetDigits();
+			gaugeGear.resetDigits();
+			circleEngine.setFill(Color.web("#d01515"));
 		}
 	}
 }
