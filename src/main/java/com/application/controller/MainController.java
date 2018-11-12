@@ -77,16 +77,13 @@ public class MainController implements Initializable {
 	@FXML
 	public void startStopEngine() {
 		if (clutch.isPressed() && !engine.isTurnedOn()) {
-			engine.setTurnedOn(true);
-			engine.setRpm(engine.getMinRpm());
-			engine.setKph(0);
-			engine.setActiveGear(GearBox.getGear("N"));
+			engine.turnOnEngine();
 			gaugeRpm.refreshDigits(String.valueOf(engine.getRpm()));
 			gaugeKph.refreshDigits(String.valueOf(engine.getKph()));
 			gaugeGear.refreshDigits(engine.getActiveGear());
 			circleEngine.setFill(Color.GREEN);
 		} else if (engine.getKph() == 0 && engine.isTurnedOn()) {
-			engine.turnOfEngine();
+			engine.turnOffEngine();
 			gaugeRpm.resetDigits();
 			gaugeKph.resetDigits();
 			gaugeGear.resetDigits();

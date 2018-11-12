@@ -19,7 +19,14 @@ public class Engine {
 		this.isTurnedOn = false;
 	}
 	
-	public void turnOfEngine() {
+	public void turnOnEngine() {
+		this.rpm = this.minRpm;
+		this.kph = 0;
+		this.activeGear = "N";
+		this.isTurnedOn = true;
+	}
+	
+	public void turnOffEngine() {
 		this.rpm = 0;
 		this.kph = 0;
 		this.activeGear = " ";
