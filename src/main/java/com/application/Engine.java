@@ -22,7 +22,7 @@ public class Engine {
 	public void turnOnEngine() {
 		this.rpm = this.minRpm;
 		this.kph = 0;
-		this.activeGear = "N";
+		this.activeGear = "1";
 		this.isTurnedOn = true;
 	}
 	

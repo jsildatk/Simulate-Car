@@ -14,7 +14,6 @@ import javafx.scene.shape.Rectangle;
 
 import com.application.DigitalGauge;
 import com.application.Engine;
-import com.application.GearBox;
 import com.application.Pedal;
 
 public class MainController implements Initializable {
@@ -29,6 +28,8 @@ public class MainController implements Initializable {
 	@FXML
 	private Rectangle rectangleClutch;
 	@FXML
+	private Rectangle rectangleThrottle;
+	@FXML
 	private Circle circleEngine;
 	
 	private DigitalGauge gaugeKph;
@@ -36,14 +37,14 @@ public class MainController implements Initializable {
 	private DigitalGauge gaugeGear;
 	private DigitalGauge gaugeShift;
 	private Pedal clutch;
+	private Pedal throttle;
 	private Engine engine;
-	private GearBox gearBox;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		gearBox = new GearBox();
 		engine = new Engine(1000, 9000, 200);
 		clutch = new Pedal();
+		throttle = new Pedal();
 		gaugeKph = new DigitalGauge(3);
 		gaugeRpm = new DigitalGauge(4);
 		gaugeGear = new DigitalGauge(1);
@@ -59,6 +60,13 @@ public class MainController implements Initializable {
 		if (event.getCode() == KeyCode.SPACE) {
 			clutch.setPressed(true);
 			rectangleClutch.setFill(Color.GREEN);
+			clutched();
+		}
+		
+		if (event.getCode() == KeyCode.UP) {
+			throttle.setPressed(true);
+			rectangleThrottle.setFill(Color.GREEN);
+			accelerate();
 		}
 		
 		event.consume();
@@ -71,6 +79,11 @@ public class MainController implements Initializable {
 			rectangleClutch.setFill(Color.web("#d01515"));
 		}
 		
+		if (event.getCode() == KeyCode.UP) {
+			throttle.setPressed(false);
+			rectangleThrottle.setFill(Color.web("#d01515"));
+		}
+		
 		event.consume();
 	}
 	
@@ -78,16 +91,47 @@ public class MainController implements Initializable {
 	public void startStopEngine() {
 		if (clutch.isPressed() && !engine.isTurnedOn()) {
 			engine.turnOnEngine();
-			gaugeRpm.refreshDigits(String.valueOf(engine.getRpm()));
-			gaugeKph.refreshDigits(String.valueOf(engine.getKph()));
-			gaugeGear.refreshDigits(engine.getActiveGear());
+			refreshGauges();
 			circleEngine.setFill(Color.GREEN);
 		} else if (engine.getKph() == 0 && engine.isTurnedOn()) {
 			engine.turnOffEngine();
-			gaugeRpm.resetDigits();
-			gaugeKph.resetDigits();
-			gaugeGear.resetDigits();
+			resetGauges();
 			circleEngine.setFill(Color.web("#d01515"));
 		}
 	}
+	
+	private void clutched() {
+		if (engine.isTurnedOn()) {
+			if (clutch.isPressed() || engine.getActiveGear() == "N") {
+				engine.setRpm(engine.getMinRpm());
+				refreshGauges();
+			}
+		}
+	}
+	
+	private void accelerate() {
+		if (engine.isTurnedOn()) {
+			if (clutch.isPressed() || engine.getActiveGear() == "N") {
+				engine.setRpm(engine.getRpm() + 80);
+			} else {
+				engine.setKph(engine.getKph() + 3);
+				engine.setRpm(1000 + (engine.getKph() * 7));
+			}
+			refreshGauges();
+		}
+		
+	}
+	
+	private void refreshGauges() {
+		gaugeRpm.refreshDigits(String.valueOf(engine.getRpm()));
+		gaugeKph.refreshDigits(String.valueOf(engine.getKph()));
+		gaugeGear.refreshDigits(engine.getActiveGear());
+	}
+	
+	private void resetGauges() {
+		gaugeRpm.resetDigits();
+		gaugeKph.resetDigits();
+		gaugeGear.resetDigits();
+	}
+	
 }
