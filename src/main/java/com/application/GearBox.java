@@ -4,40 +4,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GearBox {
-	private boolean isBroken;
-	public static List<String> gears;
+	private static boolean isBroken = false;
 	
-	public GearBox() {
-		this.isBroken = false;
-		GearBox.gears = new ArrayList<String>();
-		gears.add("R");
-		gears.add("N");
-		gears.add("1");
-		gears.add("2");
-		gears.add("3");
-		gears.add("4");
-		gears.add("5");
-		gears.add("6");
-	}
-
-	public boolean isBroken() {
+	@SuppressWarnings("serial")
+	public static final List<String> gears = new ArrayList<String>() {{
+		add("R");
+		add("N");
+		add("1");
+		add("2");
+		add("3");
+		add("4");
+		add("5");
+		add("6");
+		add("7");
+	}};
+	
+	public static boolean isBroken() {
 		return isBroken;
 	}
 
-	public void setBroken(boolean isBroken) {
-		this.isBroken = isBroken;
+	public static void setBroken(boolean isBroken) {
+		GearBox.isBroken = isBroken;
 	}
 
 	public static String getGear(String gear) {
-		for (String g : gears) {
-			if (g == gear) {
-				return g;
-			}
+		if (gears.contains(gear)) {
+			return gear;
 		}
 		return "N";
 	}
 
-	public static void setGears(String gear, int index) {
-		gears.set(index, gear);
-	}
 }

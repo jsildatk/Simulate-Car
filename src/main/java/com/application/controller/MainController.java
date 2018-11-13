@@ -79,6 +79,8 @@ public class MainController implements Initializable {
 			MotionController.accelerate();
 		}
 		
+		GearBoxController.changeGear(event);
+		
 		event.consume();
 	}
 	
