@@ -34,14 +34,14 @@ public class MainController implements Initializable {
 	@FXML
 	private Circle circleEngine;
 	
-	private DigitalGauge gaugeKph;
-	private DigitalGauge gaugeRpm;
-	private DigitalGauge gaugeGear;
-	private DigitalGauge gaugeShift;
-	private Pedal clutch;
+	private static DigitalGauge gaugeKph;
+	private static DigitalGauge gaugeRpm;
+	private static DigitalGauge gaugeGear;
+	private static DigitalGauge gaugeShift;
+	protected static Pedal clutch;
 	private Pedal brake;
 	private Pedal throttle;
-	private Engine engine;
+	protected static Engine engine;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -64,19 +64,19 @@ public class MainController implements Initializable {
 		if (event.getCode() == KeyCode.SPACE) {
 			clutch.setPressed(true);
 			rectangleClutch.setFill(Color.GREEN);
-			clutched();
+			MotionController.clutched();
 		}
 		
 		if (event.getCode() == KeyCode.DOWN) {
 			brake.setPressed(true);
 			rectangleBrake.setFill(Color.GREEN);
-			brake();
+			MotionController.brake();
 		}
 		
 		if (event.getCode() == KeyCode.UP) {
 			throttle.setPressed(true);
 			rectangleThrottle.setFill(Color.GREEN);
-			accelerate();
+			MotionController.accelerate();
 		}
 		
 		event.consume();
@@ -115,39 +115,7 @@ public class MainController implements Initializable {
 		}
 	}
 	
-	private void clutched() {
-		if (engine.isTurnedOn()) {
-			if (clutch.isPressed() || engine.getActiveGear() == "N") {
-				engine.setRpm(engine.getMinRpm());
-				resetGauges();
-				refreshGauges();
-			}
-		}
-	}
-	
-	private void brake() {
-		if (engine.isTurnedOn()) {
-			engine.setKph(engine.getKph() - 7);
-			engine.setRpm(engine.getMinRpm() + (engine.getKph() * 7));
-			resetGauges();
-			refreshGauges();
-		}
-	}
-	
-	private void accelerate() {
-		if (engine.isTurnedOn()) {
-			if (clutch.isPressed() || engine.getActiveGear() == "N") {
-				engine.setRpm(engine.getRpm() + 130);
-			} else {
-				engine.setKph(engine.getKph() + 3);
-				engine.setRpm(engine.getMinRpm() + (engine.getKph() * 7));
-			}
-			resetGauges();
-			refreshGauges();
-		}
-	}
-	
-	private void refreshGauges() {
+	protected static void refreshGauges() {
 		if (engine.getRpm() < engine.getMinRpm()) {
 			engine.setRpm(engine.getMinRpm());
 		}
@@ -161,7 +129,7 @@ public class MainController implements Initializable {
 		gaugeGear.refreshDigits(engine.getActiveGear());
 	}
 	
-	private void resetGauges() {
+	protected static void resetGauges() {
 		gaugeRpm.resetDigits();
 		gaugeKph.resetDigits();
 		gaugeGear.resetDigits();
