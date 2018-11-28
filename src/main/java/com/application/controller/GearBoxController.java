@@ -36,10 +36,6 @@ public class GearBoxController extends MainController {
 				engine.setActiveGear(GearBox.getGear("7"));
 				break;
 				
-			case R:
-				engine.setActiveGear(GearBox.getGear("R"));
-				break;
-				
 			case N:
 				engine.setActiveGear(GearBox.getGear("N"));
 				break;

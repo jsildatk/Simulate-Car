@@ -8,7 +8,6 @@ public class GearBox {
 	
 	@SuppressWarnings("serial")
 	public static final List<String> gears = new ArrayList<String>() {{
-		add("R");
 		add("N");
 		add("1");
 		add("2");
