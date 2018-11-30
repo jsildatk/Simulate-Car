@@ -43,7 +43,6 @@ public class GearBoxController extends MainController {
 			default:
 				break;
 			}
-			
 			resetGauges();
 			refreshGauges();
 		}

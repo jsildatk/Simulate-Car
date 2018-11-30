@@ -33,7 +33,7 @@ public class MainController implements Initializable {
 	private Rectangle rectangleThrottle;
 	@FXML
 	private Circle circleEngine;
-	
+
 	private static DigitalGauge gaugeKph;
 	private static DigitalGauge gaugeRpm;
 	private static DigitalGauge gaugeGear;
@@ -42,10 +42,10 @@ public class MainController implements Initializable {
 	private Pedal brake;
 	private Pedal throttle;
 	protected static Engine engine;
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		engine = new Engine(1000, 9000, 200);
+		engine = new Engine(1000, 9000, 300);
 		clutch = new Pedal();
 		brake = new Pedal();
 		throttle = new Pedal();
@@ -58,7 +58,7 @@ public class MainController implements Initializable {
 		stackPaneGaugeGear.getChildren().add(gaugeGear);
 		stackPaneGaugeShift.getChildren().add(gaugeShift);
 	}
-	
+
 	@FXML
 	public void pushPedal(KeyEvent event) {
 		if (event.getCode() == KeyCode.SPACE) {
@@ -66,44 +66,44 @@ public class MainController implements Initializable {
 			rectangleClutch.setFill(Color.GREEN);
 			MotionController.clutched();
 		}
-		
+
 		if (event.getCode() == KeyCode.DOWN) {
 			brake.setPressed(true);
 			rectangleBrake.setFill(Color.GREEN);
 			MotionController.brake();
 		}
-		
+
 		if (event.getCode() == KeyCode.UP) {
 			throttle.setPressed(true);
 			rectangleThrottle.setFill(Color.GREEN);
 			MotionController.accelerate();
 		}
-		
+
 		GearBoxController.changeGear(event);
-		
+
 		event.consume();
 	}
-	
+
 	@FXML
 	public void releasePedal(KeyEvent event) {
 		if (event.getCode() == KeyCode.SPACE) {
 			clutch.setPressed(false);
 			rectangleClutch.setFill(Color.web("#d01515"));
 		}
-		
+
 		if (event.getCode() == KeyCode.DOWN) {
 			brake.setPressed(false);
 			rectangleBrake.setFill(Color.web("#d01515"));
 		}
-		
+
 		if (event.getCode() == KeyCode.UP) {
 			throttle.setPressed(false);
 			rectangleThrottle.setFill(Color.web("#d01515"));
 		}
-	
+
 		event.consume();
 	}
-	
+
 	@FXML
 	public void startStopEngine() {
 		if (clutch.isPressed() && !engine.isTurnedOn()) {
@@ -116,34 +116,43 @@ public class MainController implements Initializable {
 			circleEngine.setFill(Color.web("#d01515"));
 		}
 	}
-	
+
 	protected static void refreshGauges() {
 		String changeGear;
-		
+
 		if (engine.getRpm() < engine.getMinRpm()) {
 			engine.setRpm(engine.getMinRpm());
 		}
-		
+
+		if (engine.getRpm() >= engine.getMaxRpm()) {
+			engine.setRpm(engine.getMaxRpm());
+		}
+
 		if (engine.getKph() <= 0) {
 			engine.setKph(0);
 		}
-		
-		if (engine.getRpm() > 2500) {
-			changeGear = "X";
+
+		if (engine.getKph() >= engine.getMaxKph()) {
+			engine.setKph(engine.getMaxKph());
+		}
+
+		if (engine.getRpm() > 2500 && engine.getActiveGear() == "N") {
+			changeGear = " ";
+		} else if (engine.getRpm() > 2500 && !clutch.isPressed()) {
+			changeGear = "X"; 
 		} else {
 			changeGear = " ";
 		}
-		
+
 		gaugeRpm.refreshDigits(String.valueOf(engine.getRpm()));
 		gaugeKph.refreshDigits(String.valueOf(engine.getKph()));
 		gaugeGear.refreshDigits(engine.getActiveGear());
 		gaugeShift.refreshDigits(changeGear);
 	}
-	
+
 	protected static void resetGauges() {
 		gaugeRpm.resetDigits();
 		gaugeKph.resetDigits();
 		gaugeGear.resetDigits();
 	}
-	
 }

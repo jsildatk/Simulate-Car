@@ -5,9 +5,9 @@ public class MotionController extends MainController {
 		if (engine.isTurnedOn()) {
 			if (clutch.isPressed() || engine.getActiveGear() == "N") {
 				engine.setRpm(engine.getMinRpm());
-				resetGauges();
-				refreshGauges();
 			}
+			resetGauges();
+			refreshGauges();
 		}
 	}
 	
