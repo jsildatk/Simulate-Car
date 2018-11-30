@@ -118,6 +118,8 @@ public class MainController implements Initializable {
 	}
 	
 	protected static void refreshGauges() {
+		String changeGear;
+		
 		if (engine.getRpm() < engine.getMinRpm()) {
 			engine.setRpm(engine.getMinRpm());
 		}
@@ -126,9 +128,16 @@ public class MainController implements Initializable {
 			engine.setKph(0);
 		}
 		
+		if (engine.getRpm() > 2500) {
+			changeGear = "X";
+		} else {
+			changeGear = " ";
+		}
+		
 		gaugeRpm.refreshDigits(String.valueOf(engine.getRpm()));
 		gaugeKph.refreshDigits(String.valueOf(engine.getKph()));
 		gaugeGear.refreshDigits(engine.getActiveGear());
+		gaugeShift.refreshDigits(changeGear);
 	}
 	
 	protected static void resetGauges() {

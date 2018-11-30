@@ -18,6 +18,7 @@ public class DigitalGauge extends Parent {
 	private HBox hBox = new HBox();
 	private Text[] digits;
 	private Group[] digitsGroup;
+	private Rectangle background;
 	
 	public DigitalGauge(int size) {
 		digits = new Text[size];
@@ -39,10 +40,9 @@ public class DigitalGauge extends Parent {
 			digits[i].setTextOrigin(VPos.TOP);
 			digits[i].setLayoutY(-5);
 			digits[i].setLayoutX(1);
-			Rectangle bg = null;
-			bg = createBackground(Color.ANTIQUEWHITE, Color.BLACK);
+			background = createBackground(Color.ANTIQUEWHITE, Color.CYAN);
 			digits[i].setFill(Color.BLUE);
-			digitsGroup[i] = new Group(bg, digits[i]);
+			digitsGroup[i] = new Group(background, digits[i]);
 		}
 	}
 
