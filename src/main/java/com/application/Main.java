@@ -16,23 +16,28 @@ import javafx.fxml.FXMLLoader;
 public class Main extends Application {
 	private final ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();
 	
-	@Override
-	public void start(Stage primaryStage) {
-		try {
-			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
-			Scene scene = new Scene(root,800,600);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.getIcons().add(new Image(Main.class.getResource("images/icon.png").toExternalForm()));
-			primaryStage.setScene(scene);
-			primaryStage.setTitle("Need For Speed");
-			exec.scheduleAtFixedRate(new Runnable() {
+	private void runTask() {
+		exec.scheduleAtFixedRate(new Runnable() {
 			  @Override
 			  public void run() {
 			    MotionController.engineBrake();
 			  }
 			}, 0, 100, TimeUnit.MILLISECONDS);
+	}
+	
+	@Override
+	public void start(Stage primaryStage) {
+		try {
+			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
+			Scene scene = new Scene(root,1280,720);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			scene.getRoot().requestFocus();
+			primaryStage.getIcons().add(new Image(Main.class.getResource("images/icon.png").toExternalForm()));
+			primaryStage.setScene(scene);
+			primaryStage.setTitle("Need For Speed");
+			primaryStage.setFullScreen(true);
 			primaryStage.show();
+			runTask();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
