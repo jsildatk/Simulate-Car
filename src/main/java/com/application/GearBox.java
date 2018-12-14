@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GearBox {
-	private static boolean isBroken = false;
-	
 	@SuppressWarnings("serial")
 	public static final List<String> gears = new ArrayList<String>() {{
 		add("N");
@@ -17,14 +15,6 @@ public class GearBox {
 		add("6");
 		add("7");
 	}};
-	
-	public static boolean isBroken() {
-		return isBroken;
-	}
-
-	public static void setBroken(boolean isBroken) {
-		GearBox.isBroken = isBroken;
-	}
 
 	public static String getGear(String gear) {
 		if (gears.contains(gear)) {

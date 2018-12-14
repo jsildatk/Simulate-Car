@@ -6,7 +6,7 @@ import javafx.scene.input.KeyEvent;
 
 public class GearBoxController extends MainController {
 	static void changeGear(KeyEvent event) {
-		if (engine.isTurnedOn() && clutch.isPressed() && !GearBox.isBroken()) {
+		if (engine.isTurnedOn() && clutch.isPressed()) {
 			switch(event.getCode()) {
 			case DIGIT1:
 				engine.setActiveGear(GearBox.getGear("1"));
