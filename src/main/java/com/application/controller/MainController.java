@@ -2,6 +2,7 @@ package com.application.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -64,7 +65,6 @@ public class MainController implements Initializable {
 		if (event.getCode() == KeyCode.SPACE) {
 			clutch.setPressed(true);
 			rectangleClutch.setFill(Color.GREEN);
-			MotionController.clutched();
 		}
 
 		if (event.getCode() == KeyCode.DOWN) {
@@ -119,6 +119,15 @@ public class MainController implements Initializable {
 
 	protected static void refreshGauges() {
 		String changeGear;
+		// TODO jak sie jest na sprzegle albo na N to gaz zwieksza obroty
+
+		if (engine.getActiveGear() == "N" || clutch.isPressed()) {
+			engine.setRpm(engine.getMinRpm());
+		} else {
+			int randomNumber = ThreadLocalRandom.current().nextInt(192, 201);
+			engine.setRpm(((engine.getMinRpm() + (engine.getKph()) * randomNumber)
+					/ Integer.parseInt(engine.getActiveGear())));
+		}
 
 		if (engine.getRpm() < engine.getMinRpm()) {
 			engine.setRpm(engine.getMinRpm());
@@ -139,7 +148,7 @@ public class MainController implements Initializable {
 		if (engine.getRpm() > 2500 && engine.getActiveGear() == "N") {
 			changeGear = " ";
 		} else if (engine.getRpm() > 2500 && !clutch.isPressed()) {
-			changeGear = "X"; 
+			changeGear = "X";
 		} else {
 			changeGear = " ";
 		}
@@ -154,5 +163,6 @@ public class MainController implements Initializable {
 		gaugeRpm.resetDigits();
 		gaugeKph.resetDigits();
 		gaugeGear.resetDigits();
+		gaugeShift.resetDigits();
 	}
 }
