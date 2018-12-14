@@ -39,8 +39,8 @@ public class MainController implements Initializable {
 	private static DigitalGauge gaugeGear;
 	private static DigitalGauge gaugeShift;
 	protected static Pedal clutch;
-	private Pedal brake;
-	private Pedal throttle;
+	protected static Pedal brake;
+	protected static Pedal throttle;
 	protected static Engine engine;
 
 	@Override
