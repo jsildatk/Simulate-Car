@@ -1,5 +1,7 @@
 package com.application.controller;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class MotionController extends MainController {
 	static void clutched() {
 		if (engine.isTurnedOn()) {
@@ -39,9 +41,8 @@ public class MotionController extends MainController {
 
 	public static void engineBrake() {
 		if (!throttle.isPressed() && engine.isTurnedOn()) {
-			// TODO tutaj czeba wylosowac ten spadek (1-4) a potem uzaleznic obroty od
-			// prendkosci i gitara siemanko
-			engine.setKph(engine.getKph() - 2);
+			int randomNumber = ThreadLocalRandom.current().nextInt(1, 6);
+			engine.setKph(engine.getKph() - randomNumber);
 			resetGauges();
 			refreshGauges();
 		}

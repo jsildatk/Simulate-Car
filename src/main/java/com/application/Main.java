@@ -14,7 +14,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.fxml.FXMLLoader;
 
 public class Main extends Application {
-	private final ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();;
+	private final ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -24,7 +25,6 @@ public class Main extends Application {
 			primaryStage.getIcons().add(new Image(Main.class.getResource("images/icon.png").toExternalForm()));
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Need For Speed");
-			// TODO walnac to w inna klase bo mnie to ndenerwuje jak tutaj jest cos takiego
 			exec.scheduleAtFixedRate(new Runnable() {
 			  @Override
 			  public void run() {
