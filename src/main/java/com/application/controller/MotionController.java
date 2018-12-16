@@ -32,7 +32,7 @@ public class MotionController extends MainController {
 
 	public static void engineBrake() {
 		if (engine.isTurnedOn()) {
-			if (!throttle.isPressed() && !brake.isPressed() && !clutch.isPressed() && engine.getActiveGear() != "N") {
+			if (!throttle.isPressed() && !brake.isPressed()) {
 				randomNumber = ThreadLocalRandom.current().nextInt(1, 4);
 				engine.setKph(engine.getKph() - randomNumber);
 				resetGauges();

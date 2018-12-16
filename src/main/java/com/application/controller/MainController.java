@@ -119,12 +119,17 @@ public class MainController implements Initializable {
 
 	protected static void refreshGauges() {
 		String changeGear;
-		// TODO jak sie jest na sprzegle albo na N to gaz zwieksza obroty
+		int randomNumber;
 
 		if (engine.getActiveGear() == "N" || clutch.isPressed()) {
-			engine.setRpm(engine.getMinRpm());
+			if (throttle.isPressed()) {
+				randomNumber = ThreadLocalRandom.current().nextInt(120, 141);
+				engine.setRpm(engine.getRpm() + randomNumber);
+			} else {
+				engine.setRpm(engine.getMinRpm());	
+			}
 		} else {
-			int randomNumber = ThreadLocalRandom.current().nextInt(192, 201);
+			randomNumber = ThreadLocalRandom.current().nextInt(192, 201);
 			engine.setRpm(((engine.getMinRpm() + (engine.getKph()) * randomNumber)
 					/ Integer.parseInt(engine.getActiveGear())));
 		}
