@@ -12,9 +12,9 @@ import javafx.scene.text.Text;
 
 public class DigitalGauge extends Parent {
 	private final double boxHeight = 12;
-	private final double boxWidth = boxHeight * 6 / 8;
+	private final double boxWidth = boxHeight*6/8;
 	private final double scale = 5;
-	private final Font font = new Font(12.8 * scale);
+	private final Font font = new Font(12.8*scale);
 	private HBox hBox = new HBox();
 	private Text[] digits;
 	private Group[] digitsGroup;
@@ -47,7 +47,7 @@ public class DigitalGauge extends Parent {
 	}
 
 	private Rectangle createBackground(Color fill, Color stroke) {
-		Rectangle bg = new Rectangle(boxWidth * scale, boxHeight * scale, fill);
+		Rectangle bg = new Rectangle(boxWidth*scale, boxHeight*scale, fill);
 		bg.setStroke(stroke);
 		bg.setStrokeWidth(5);
 		bg.setEffect(new Lighting());

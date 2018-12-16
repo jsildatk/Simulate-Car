@@ -80,7 +80,6 @@ public class MainController implements Initializable {
 		}
 
 		GearBoxController.changeGear(event);
-
 		event.consume();
 	}
 

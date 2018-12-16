@@ -29,7 +29,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
-			Scene scene = new Scene(root,1280,720);
+			Scene scene = new Scene(root, 1280, 720);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			scene.getRoot().requestFocus();
 			primaryStage.getIcons().add(new Image(Main.class.getResource("images/icon.png").toExternalForm()));
@@ -38,7 +38,7 @@ public class Main extends Application {
 			primaryStage.setFullScreen(true);
 			primaryStage.show();
 			runTask();
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

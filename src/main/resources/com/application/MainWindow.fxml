@@ -9,96 +9,133 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#pushPedal" onKeyReleased="#releasePedal" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.application.controller.MainController">
-      <top>
-      <HBox alignment="CENTER" prefHeight="178.0" prefWidth="800.0" BorderPane.alignment="CENTER">
-         <children>
-            <StackPane fx:id="stackPaneGaugeKMH" prefHeight="150.0" prefWidth="200.0">
-      			<children>
-      				<Text fill="BLACK" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" style="Bold" text="KM/H" StackPane.alignment="BOTTOM_CENTER">
-                  		<font>
-                        	<Font name="System Bold" size="20.0" />
-                    	</font>
-                	</Text>
-      			</children>
-      		</StackPane>
-            <StackPane fx:id="stackPaneGaugeRPM" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="255.0">
-            	<children>
-      				<Text fill="BLACK" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" style="Bold" text="RPM" StackPane.alignment="BOTTOM_CENTER">
-                  		<font>
-                        	<Font name="System Bold" size="20.0" />
-                    	</font>
-                	</Text>
-      			</children>
-            </StackPane>
-            <StackPane fx:id="stackPaneGaugeGear" layoutX="10.0" layoutY="160.0" prefHeight="150.0" prefWidth="200.0">
-            	<children>
-      				<Text fill="BLACK" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" style="Bold" text="Bieg" StackPane.alignment="BOTTOM_CENTER">
-                  		<font>
-                        	<Font name="System Bold" size="20.0" />
-                    	</font>
-                	</Text>
-      			</children>
-            </StackPane>
-            <StackPane fx:id="stackPaneGaugeShift" layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0">
-            	<children>
-      				<Text fill="BLACK" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" style="Bold" text="Zmiana biegu" StackPane.alignment="BOTTOM_CENTER">
-                  		<font>
-                        	<Font name="System Bold" size="20.0" />
-                    	</font>
-                	</Text>
-      			</children>
-            </StackPane>
-         </children>
-      </HBox>
-   </top>
-   <center>
-      <AnchorPane id="anchorPaneImage" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-   </center>
-   <bottom>
-      <HBox alignment="CENTER" prefHeight="243.0" prefWidth="800.0" BorderPane.alignment="CENTER">
-         <children>
-            <StackPane prefHeight="150.0" prefWidth="200.0">
-            <children>
-                  <Circle fx:id="circleEngine" fill="#d01515" onMouseClicked="#startStopEngine" radius="75.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" />
-                  <Text fill="#d7d70a" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="START/STOP ENGINE" StackPane.alignment="CENTER">
-                  	<font>
-                        <Font name="System Bold" size="12.0" />
-                  	</font>
-                  </Text>
-               </children>
-            </StackPane>
-            <StackPane prefHeight="150.0" prefWidth="200.0">
-				<children>
-                  <Rectangle fx:id="rectangleClutch" arcHeight="5.0" arcWidth="5.0" fill="#d01515" height="109.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" width="138.0" />
-                  <Text fill="#d7d70a" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" style="Bold" text="Sprzęgło" StackPane.alignment="BOTTOM_CENTER">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Text>
-               </children>
-            </StackPane>
-            <StackPane prefHeight="150.0" prefWidth="200.0">
-            	<children>
-                  <Rectangle fx:id="rectangleBrake" arcHeight="5.0" arcWidth="5.0" fill="#d01515" height="109.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" width="138.0" />
-                  <Text fill="#d7d70a" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" style="Bold" text="Hamulec" StackPane.alignment="BOTTOM_CENTER">
-                  	<font>
-                        <Font name="System Bold" size="20.0" />
-                    </font>
-                  </Text>
-               </children>
-            </StackPane>
-            <StackPane prefHeight="150.0" prefWidth="200.0">
-            <children>
-                  <Rectangle fx:id="rectangleThrottle" arcHeight="5.0" arcWidth="5.0" fill="#d01515" height="109.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" width="138.0" />
-                  <Text fill="#d7d70a" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" style="Bold" text="Gaz" StackPane.alignment="BOTTOM_CENTER">
-                  	<font>
-                        <Font name="System Bold" size="20.0" />
-                    </font>
-                  </Text>
-               </children>
-            </StackPane>
-         </children>
-      </HBox>
-   </bottom>
+<BorderPane id="borderPane" maxHeight="-Infinity"
+	maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+	onKeyPressed="#pushPedal" onKeyReleased="#releasePedal"
+	prefHeight="600.0" prefWidth="800.0"
+	xmlns="http://javafx.com/javafx/8.0.171"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="com.application.controller.MainController">
+	<top>
+		<HBox alignment="CENTER" prefHeight="178.0" prefWidth="800.0"
+			BorderPane.alignment="CENTER">
+			<children>
+				<StackPane fx:id="stackPaneGaugeKMH" prefHeight="150.0"
+					prefWidth="200.0">
+					<children>
+						<Text fill="BLACK" fontSmoothingType="LCD"
+							strokeType="OUTSIDE" strokeWidth="0.0" style="Bold" text="KM/H"
+							StackPane.alignment="BOTTOM_CENTER">
+							<font>
+								<Font name="System Bold" size="20.0" />
+							</font>
+						</Text>
+					</children>
+				</StackPane>
+				<StackPane fx:id="stackPaneGaugeRPM" layoutX="10.0"
+					layoutY="10.0" prefHeight="100.0" prefWidth="255.0">
+					<children>
+						<Text fill="BLACK" fontSmoothingType="LCD"
+							strokeType="OUTSIDE" strokeWidth="0.0" style="Bold" text="RPM"
+							StackPane.alignment="BOTTOM_CENTER">
+							<font>
+								<Font name="System Bold" size="20.0" />
+							</font>
+						</Text>
+					</children>
+				</StackPane>
+				<StackPane fx:id="stackPaneGaugeGear" layoutX="10.0"
+					layoutY="160.0" prefHeight="150.0" prefWidth="200.0">
+					<children>
+						<Text fill="BLACK" fontSmoothingType="LCD"
+							strokeType="OUTSIDE" strokeWidth="0.0" style="Bold" text="Bieg"
+							StackPane.alignment="BOTTOM_CENTER">
+							<font>
+								<Font name="System Bold" size="20.0" />
+							</font>
+						</Text>
+					</children>
+				</StackPane>
+				<StackPane fx:id="stackPaneGaugeShift" layoutX="10.0"
+					layoutY="10.0" prefHeight="150.0" prefWidth="200.0">
+					<children>
+						<Text fill="BLACK" fontSmoothingType="LCD"
+							strokeType="OUTSIDE" strokeWidth="0.0" style="Bold"
+							text="Zmiana biegu" StackPane.alignment="BOTTOM_CENTER">
+							<font>
+								<Font name="System Bold" size="20.0" />
+							</font>
+						</Text>
+					</children>
+				</StackPane>
+			</children>
+		</HBox>
+	</top>
+	<center>
+		<AnchorPane id="anchorPaneImage" prefHeight="200.0"
+			prefWidth="200.0" BorderPane.alignment="CENTER" />
+	</center>
+	<bottom>
+		<HBox alignment="CENTER" prefHeight="243.0" prefWidth="800.0"
+			BorderPane.alignment="CENTER">
+			<children>
+				<StackPane prefHeight="150.0" prefWidth="200.0">
+					<children>
+						<Circle fx:id="circleEngine" fill="#d01515"
+							onMouseClicked="#startStopEngine" radius="75.0" stroke="BLACK"
+							strokeType="INSIDE" strokeWidth="5.0" />
+						<Text fill="#d7d70a" fontSmoothingType="LCD"
+							strokeType="OUTSIDE" strokeWidth="0.0" text="START/STOP ENGINE"
+							StackPane.alignment="CENTER">
+							<font>
+								<Font name="System Bold" size="12.0" />
+							</font>
+						</Text>
+					</children>
+				</StackPane>
+				<StackPane prefHeight="150.0" prefWidth="200.0">
+					<children>
+						<Rectangle fx:id="rectangleClutch" arcHeight="5.0"
+							arcWidth="5.0" fill="#d01515" height="109.0" stroke="BLACK"
+							strokeType="INSIDE" strokeWidth="5.0" width="138.0" />
+						<Text fill="#d7d70a" fontSmoothingType="LCD"
+							strokeType="OUTSIDE" strokeWidth="0.0" style="Bold"
+							text="Sprzęgło" StackPane.alignment="BOTTOM_CENTER">
+							<font>
+								<Font name="System Bold" size="20.0" />
+							</font>
+						</Text>
+					</children>
+				</StackPane>
+				<StackPane prefHeight="150.0" prefWidth="200.0">
+					<children>
+						<Rectangle fx:id="rectangleBrake" arcHeight="5.0"
+							arcWidth="5.0" fill="#d01515" height="109.0" stroke="BLACK"
+							strokeType="INSIDE" strokeWidth="5.0" width="138.0" />
+						<Text fill="#d7d70a" fontSmoothingType="LCD"
+							strokeType="OUTSIDE" strokeWidth="0.0" style="Bold"
+							text="Hamulec" StackPane.alignment="BOTTOM_CENTER">
+							<font>
+								<Font name="System Bold" size="20.0" />
+							</font>
+						</Text>
+					</children>
+				</StackPane>
+				<StackPane prefHeight="150.0" prefWidth="200.0">
+					<children>
+						<Rectangle fx:id="rectangleThrottle" arcHeight="5.0"
+							arcWidth="5.0" fill="#d01515" height="109.0" stroke="BLACK"
+							strokeType="INSIDE" strokeWidth="5.0" width="138.0" />
+						<Text fill="#d7d70a" fontSmoothingType="LCD"
+							strokeType="OUTSIDE" strokeWidth="0.0" style="Bold" text="Gaz"
+							StackPane.alignment="BOTTOM_CENTER">
+							<font>
+								<Font name="System Bold" size="20.0" />
+							</font>
+						</Text>
+					</children>
+				</StackPane>
+			</children>
+		</HBox>
+	</bottom>
 </BorderPane>
